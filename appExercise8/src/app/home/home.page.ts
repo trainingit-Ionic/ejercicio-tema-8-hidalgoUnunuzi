@@ -17,6 +17,11 @@ export class HomePage implements OnInit {
     if ((this.platform.is('mobile')) || (this.platform.is('tablet'))) {
       this.show = true;
     }
+    this.platform.pause.subscribe(() => {
+      if (this.flashlight.isSwitchedOn) {
+        this.flashlight.switchOff();
+      }
+    });
   }
 
 
