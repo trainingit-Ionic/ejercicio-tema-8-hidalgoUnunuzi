@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashlight } from '@ionic-native/flashlight/ngx';
-
 import	{	Platform	}	from	'@ionic/angular';
 
 @Component({
@@ -12,8 +11,13 @@ export class HomePage implements OnInit {
   show = false;
   on = false;
   constructor(
-    private flashlight: Flashlight
-  ) {}
+    private flashlight: Flashlight,
+    private platform: Platform
+  ) {
+    if ((this.platform.is('mobile')) || (this.platform.is('tablet'))) {
+      this.show = true;
+    }
+  }
 
 
  async isAvailable(): Promise<boolean> {
