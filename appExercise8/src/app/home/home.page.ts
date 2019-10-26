@@ -22,6 +22,12 @@ export class HomePage implements OnInit {
         this.flashlight.switchOff();
       }
     });
+
+    this.platform.backButton.subscribe(() => {
+      if (this.flashlight.isSwitchedOn) {
+        this.flashlight.switchOff();
+      }
+    });
   }
 
 
